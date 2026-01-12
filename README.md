@@ -36,3 +36,7 @@ The app uses the official Google Translate "Simple" layout.
 [Safety & Moderation]
 
 This tool is for educational purposes. All content is sourced from the official Scratch "Rejected Suggestions" forum topic. Please refer to the Scratch Community Guidelines when discussing these topics on the official Scratch website.
+
+[License]
+
+This project is open source and available under the GNU GPLv3 License. This is a "copyleft" license that requires you to share any modified versions of the code under the same license terms.
