@@ -1,2 +1,2 @@
-# scratch.rejected
+# Scratch.rejected
 Scratch.rejected
