@@ -1,0 +1,2 @@
+# scratch.rejected
+Scratch.rejected
