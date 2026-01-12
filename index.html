@@ -236,8 +236,8 @@
             title: "Scratch.rejected",
             searchPlaceholder: "Search",
             categoryHeader: "Sections",
-            rejectedHeader: "Reasoning",
-            workaroundHeader: "Suggested Workaround",
+            rejectedHeader: "Reason",
+            workaroundHeader: "Workaround",
             heroTitle: "The Archive of \"No\"",
             heroSubtitle: "Explore the official list of rejected suggestions from the Scratch Team. Understand the philosophy behind the platform's constraints and learn the clever workarounds developed by the community.",
             heroMainBtn: "Browse All Suggestions",
@@ -315,11 +315,22 @@
         import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, onSnapshot, doc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const firebaseConfig = JSON.parse(__firebase_config);
+        // Firebase Configuration from .env
+        const firebaseConfig = {
+            apiKey: "AIzaSyBlumyeTsaitjdlQJZjKA7IuRXuM6kcRJE",
+            authDomain: "spark-social-project.firebaseapp.com",
+            projectId: "spark-social-project",
+            storageBucket: "spark-social-project.firebasestorage.app",
+            messagingSenderId: "552486852222",
+            appId: "1:552486852222:web:ffd8e87d6559e1d6f8aa2f"
+        };
+        
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-id';
+        
+        // App ID logic
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'scratch-rejected-v1';
 
         let suggestions = [...window.LOCAL_DATA];
         let userVotes = {};
@@ -382,6 +393,7 @@
             onAuthStateChanged(auth, (user) => {
                 currentUser = user;
                 if (user) {
+                    // Path: artifacts/{appId}/public/data/rejectedSuggestions
                     const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'rejectedSuggestions');
                     onSnapshot(colRef, (snapshot) => {
                         const dbItems = {};
@@ -391,14 +403,15 @@
                             score: (dbItems[item.id] && dbItems[item.id].score !== undefined) ? dbItems[item.id].score : (item.score || 0)
                         }));
                         render();
-                    }, (err) => {});
+                    }, (err) => console.error("Firestore sync error:", err));
 
+                    // Path: artifacts/{appId}/users/{userId}/votes
                     const userVotesRef = collection(db, 'artifacts', appId, 'users', user.uid, 'votes');
                     onSnapshot(userVotesRef, (snapshot) => {
                         userVotes = {};
                         snapshot.forEach(doc => userVotes[doc.id] = doc.data().value);
                         render();
-                    }, (err) => {});
+                    }, (err) => console.error("User votes sync error:", err));
                 }
             });
         }
