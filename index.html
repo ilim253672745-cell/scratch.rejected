@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejected Suggestions Reference</title>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Google Sans', 'Roboto', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --google-blue: #1a73e8;
+            --google-gray: #5f6368;
+            --google-bg: #ffffff;
+            --google-surface: #f8f9fa;
+        }
+
+        .dark {
+            --google-bg: #202124;
+            --google-surface: #2d2e30;
+            --google-gray: #9aa0a6;
+        }
+
+        body {
+            background-color: var(--google-bg);
+            color: #202124;
+            font-family: 'Google Sans', sans-serif;
+            transition: background-color 0.2s;
+        }
+
+        .dark body {
+            color: #e8eaed;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .minimal-input {
+            background: var(--google-surface);
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .minimal-input:focus {
+            background: var(--google-bg);
+            border-color: var(--google-blue);
+            box-shadow: 0 1px 2px rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+        }
+
+        .nav-item {
+            border-radius: 0 24px 24px 0;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .card {
+            border-bottom: 1px solid #e8eaed;
+        }
+
+        .dark .card {
+            border-bottom-color: #3c4043;
+        }
+
+        mark {
+            background-color: #fff2ac;
+            color: #202124;
+            padding: 0 2px;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(26, 115, 232, 0.05), transparent);
+        }
+
+        #google_translate_element {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .goog-te-gadget-simple {
+            background-color: transparent !important;
+            border: 1px solid #dadce0 !important;
+            padding: 4px 8px !important;
+            border-radius: 20px !important;
+            font-family: 'Google Sans', sans-serif !important;
+            font-size: 13px !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        .dark .goog-te-gadget-simple {
+            border-color: #3c4043 !important;
+            background-color: #2d2e30 !important;
+            color: #e8eaed !important;
+        }
+        .dark .goog-te-gadget-simple .goog-te-menu-value span {
+            color: #e8eaed !important;
+        }
+        .goog-te-gadget-simple img, .goog-te-gadget-icon, .goog-te-menu-value span:nth-child(3) {
+            display: none !important;
+        }
+        .goog-te-menu-value span:nth-child(5) {
+            color: #1a73e8 !important;
+            margin-left: 4px !important;
+        }
+        .goog-te-banner-frame { display: none !important; }
+        body { top: 0 !important; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #dadce0; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #3c4043; }
+    </style>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body class="min-h-screen">
+
+    <script>
+        // Auto Dark Mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+
+        window.LOCAL_DATA = [
+            { "id": "broadcast-received", "title": "Broadcast received boolean", "category": "Scratch Blocks", "reason": "This block has ambiguous timing semantics because it is unclear how long the 'received' state should stay true or how it would reset. It could lead to confusion regarding race conditions in scripts.", "workaround": "Users can create a variable that is set to 1 when the broadcast is received and reset to 0 after the logic is executed, providing manual control over timing.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "stop-sign", "title": "When stop sign clicked", "category": "Scratch Blocks", "reason": "The stop button is designed as an emergency halt for all scripts. Allowing code to run when it is clicked would defeat its purpose as a safety mechanism to stop projects.", "workaround": "A common community hack involves using the 'when timer > 0' hat block combined with a script that constantly resets the timer to 0 while the project runs. When the stop sign is clicked, the timer reset stops, causing the timer to exceed 0 and trigger the block.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "pointing-towards", "title": "Pointing towards sprite", "category": "Scratch Blocks", "reason": "This is rejected due to an unclear definition. It is debated whether the sprite should point toward the center of the target's costume, its rotation center, or its general direction, which varies by sprite shape.", "workaround": "Advanced users can calculate the angle between two sprites using the 'atan' operator and the x/y positions of both objects to achieve precise custom rotation.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "social-action", "title": "Social action blocks", "category": "Scratch Blocks", "reason": "These blocks (e.g., 'love project' or 'favorite project') are rejected because they force user engagement. Scratch aims for organic appreciation rather than scripted requirements for project progression.", "workaround": "Creators often place offscreen sprites that detect mouse clicks in the general area of the love and favorite buttons, though this is unreliable and generally discouraged.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "cloud-lists", "title": "Cloud lists", "category": "Scratch Blocks", "reason": "Maintaining cloud-based lists presents significant moderation challenges. They could be used to store and share inappropriate text or personal information across the network without oversight.", "workaround": "Users can encode list items into long strings of numbers (using a cipher) and store them in standard cloud variables, then decode them back into a local list when a project loads.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "2d-lists", "title": "2D lists", "category": "Scratch Blocks", "reason": "Multi-dimensional arrays are considered too complex for the primary target audience of Scratch, which includes children as young as 8 years old. The Scratch Team prefers keeping data structures simple.", "workaround": "You can simulate a 2D grid using a single list by using mathematical indexing (e.g., 'item ((y * width) + x) of list') to reference specific rows and columns.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "3d-scratch", "title": "3D Scratch", "category": "Scratch Blocks", "reason": "Native 3D rendering engine support is beyond the scope of Scratch's mission to be a simple introductory language. It would require a massive engine overhaul and increase the learning curve significantly.", "workaround": "For those seeking 3D block coding, the Snap! programming language offers more advanced features, or users can build custom 3D wireframe engines using the Scratch pen extension.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "mouse-control", "title": "Mouse control blocks", "category": "Scratch Blocks", "reason": "Blocks that would allow a project to move the user's actual system mouse cursor or lock it are rejected for security and usability reasons. It could be used to create 'trap' projects that prevent users from leaving.", "workaround": "While you cannot move the mouse, you can hide the default cursor (by leaving the stage) and have a sprite follow the 'mouse x' and 'mouse y' coordinates to act as a custom in-game cursor.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "forever-if", "title": "Forever if", "category": "Scratch Blocks", "reason": "This block existed in Scratch 1.4 but was removed in 2.0. It is considered redundant because it performs the exact same function as an 'if' block nested inside a 'forever' loop.", "workaround": "Simply drag a standard 'if' block into a 'forever' loop to achieve the continuous conditional checking required for games and animations.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "comment-block", "title": "Comment block", "category": "Scratch Blocks", "reason": "A block that does nothing but hold text is considered misleading for new users. They might expect the text within the block to perform an action or trigger a specific behavior.", "workaround": "Use the built-in comments feature by right-clicking the script area, or create a custom block (My Blocks) named 'comment' with a text input that remains empty of any logic.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "jump-code", "title": "Jump to code", "category": "Scratch Blocks", "reason": "Adding 'GOTO' or 'jump' blocks encourages 'spaghetti code,' which is difficult to read and debug. This goes against the goal of teaching structured and organized programming logic.", "workaround": "Break complex scripts into smaller, reusable 'My Blocks' (functions) or use broadcasts to trigger different segments of logic across the project.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "collab", "title": "Collaborative editing", "category": "Interface", "reason": "Real-time collaboration is rejected due to massive moderation risks and technical complexity. It would be difficult to monitor live chat and edits between multiple anonymous users simultaneously.", "workaround": "The 'remix' workflow is the official way to collaborate. One user shares a project, and another user remixes it to add their own changes, building upon the original work.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "text-mode", "title": "Text-based Scratch", "category": "Interface", "reason": "Scratch is fundamentally a visual, block-based language. Adding a text mode would detract from the goal of eliminating syntax errors for beginners. This includes pseudo-code modes.", "workaround": "Users looking for a transition to text can try Microsoft MakeCode, which allows toggling between blocks and JavaScript/Python, or move on to learning Python directly.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "exe-export", "title": "EXE export", "category": "Interface", "reason": "Official support for exporting to .exe or .app files is rejected because it breaks the 'remix culture.' Projects should stay on the website where the source code is easily accessible to others.", "workaround": "Third-party community tools, such as the TurboWarp Packager, allow users to convert their .sb3 files into standalone executables or HTML files for distribution.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "clone-limit", "title": "Increase clone limit", "category": "Interface", "reason": "The 300-clone limit exists to ensure that projects run smoothly on older computers and mobile devices. Increasing it would lead to widespread performance issues and crashes for many users.", "workaround": "Efficient coding practices, such as reusing clones or using the pen extension to 'stamp' images onto the stage, can simulate the appearance of thousands of objects without the overhead.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "console", "title": "Console editor", "category": "Interface", "reason": "There is very low demand for a built-in terminal or console in Scratch. Most users prefer the visual stage and variable monitors for debugging and displaying information.", "workaround": "Users can use external Integrated Development Environments (IDEs) or browser developer tools to inspect the underlying JavaScript if they are working on Scratch extensions or mods.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "default-list", "title": "Default list", "category": "Interface", "reason": "Providing a list by default (similar to the 'my variable' default) is rejected because lists are an advanced feature. Many users would find it annoying to delete a list they don't need.", "workaround": "Lists must be created manually through the variables pane. This ensures that only users who understand how to use them will have them in their project workspace.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "cloud-letters", "title": "Letters in cloud vars", "category": "Interface", "reason": "Allowing strings or letters in cloud variables would make it too easy to create unmoderated chat rooms. Currently, cloud variables only support numbers to limit communication to high scores or coordinates.", "workaround": "Users can create a 'numeric engine' that assigns a two-digit number to every letter of the alphabet (e.g., A=01, B=02), allowing them to store text as a series of numbers.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "ai-images", "title": "AI images", "category": "Interface", "reason": "Integrating AI image generation directly into the Scratch editor is rejected due to ethical concerns regarding training data and the potential for generating inappropriate content that bypasses filters.", "workaround": "Users are free to generate images using external AI tools and upload them as costumes, provided the content complies with the Scratch Community Guidelines.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "cloud-chat", "title": "Cloud chat", "category": "Projects", "reason": "Open cloud-based chat rooms are strictly forbidden and rejected because they are impossible for the Scratch Team to moderate in real-time. This is a primary safety concern for the platform.", "workaround": "Some projects use a 'whitelist' system where users can only select from a pre-defined list of safe phrases (e.g., 'Hello!', 'Good game!'), which prevents bullying or sharing personal info.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "disable-remix", "title": "Disable remix", "category": "Projects", "reason": "The ability to remix is a core pillar of the Scratch philosophy. Every project shared on the site is licensed under Creative Commons, meaning others have the right to view and build upon the code.", "workaround": "While you cannot stop remixes, you can ask for credit in the 'Notes and Credits' section. If someone remixes without making changes, you can report it as a 'copy' for the moderators to review.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "ban-franchise", "title": "Ban franchises", "category": "Projects", "reason": "Banning specific franchises (like FNAF or Roblox) is rejected because the appropriateness of a project is determined by its content, not the brand it is based on. Specific rules vary by context.", "workaround": "Users should report specific projects that contain scary or violent imagery rather than calling for a blanket ban on an entire series or brand.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "ban-nocode", "title": "Ban no-code", "category": "Projects", "reason": "Scratch is a platform for 'all sorts of creative projects.' This includes art, animations, and stories that might not use complex scripts. Banning them would limit the creative expression of the community.", "workaround": "Users who prefer coding-heavy content can use the search filters or follow specific 'Scratcher' accounts that focus primarily on complex game mechanics and engines.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "remove-censor", "title": "Remove censor", "category": "Projects", "reason": "The filter/censor is a vital safety tool for a site used by children. Removing it would expose the community to harmful language and inappropriate content.", "workaround": "Instead of removing the censor, the community is encouraged to suggest improvements to the filter to reduce 'false positives' where innocent words are accidentally blocked.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "view-unshared", "title": "View unshared", "category": "Projects", "reason": "Allowing others to see unshared projects would be a major privacy violation. Users need a private space to work on drafts and experiments before they are ready for public viewing.", "workaround": "There is no workaround for this. If you want someone to see a project, you must share it or show it to them in person on your device.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "ban-ai", "title": "Ban AI art", "category": "Projects", "reason": "A blanket ban on AI art is rejected because it is often impossible to prove whether an image was created by an AI or a human. It would create an unenforceable and controversial rule.", "workaround": "The community is encouraged to give credit to the AI tool used in the 'Notes and Credits' section, maintaining transparency about how the project's assets were created.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "disable-see-inside", "title": "Disable see inside", "category": "Project Pages", "reason": "Removing the 'See Inside' button is rejected because it prevents others from learning how a project works. Learning through exploration is a fundamental part of the Scratch experience.", "workaround": "If you do not want anyone to see your code, the only option is to keep the project unshared. However, this also means you cannot participate in the community with that specific project.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "dislike", "title": "Dislike button", "category": "Project Pages", "reason": "A dislike button is rejected because it would likely lead to targeted harassment, 'dislike bombing,' and general negativity. Scratch aims to be a supportive and encouraging environment.", "workaround": "If you don't like a project, you can simply leave the page. If the project is breaking rules, use the 'Report' button to notify the Scratch Team.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "viewers", "title": "See viewers", "category": "Project Pages", "reason": "A list of everyone who viewed a project is rejected to prevent drama and privacy issues. It could lead to 'why did you look at my project but not like it' type of conflicts.", "workaround": "You can create a cloud-based 'visitor log' where users can opt-in to 'sign' their name, but this only tracks users who voluntarily interact with the project.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "see-reporters", "title": "See reporters", "category": "Project Pages", "reason": "Showing who reported a project would lead to retaliation and harassment against the reporter. Reports must remain anonymous to ensure users feel safe flagging inappropriate content.", "workaround": "There is no workaround. Reports are handled exclusively by the Scratch Team to maintain a neutral and safe moderation process.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "remix-tree", "title": "Restore remix tree", "category": "Project Pages", "reason": "The old remix tree was removed because it was built on outdated technology that could no longer handle the massive scale of the Scratch database. Restoring it is not technically feasible in its old form.", "workaround": "Currently, there is no direct visual workaround. You can click the 'Remixes' link on a project page to see a flat list of all projects based on the original.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "remove-activity", "title": "Remove activity", "category": "Studios", "reason": "The activity feed in studios is a useful feature for tracking changes and management. Removing it would make it harder for studio owners to see what curators are doing.", "workaround": "If the activity feed is distracting, users can simply choose to ignore it. There are no settings to hide it for specific users or studios.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "invite-all", "title": "Invite all followers", "category": "Studios", "reason": "An 'Invite All' button for studios would be a major source of spam. It would allow users to flood thousands of people with notifications instantly, annoying the community.", "workaround": "Users must manually select the followers they wish to invite. This ensures that invites are (hopefully) sent more selectively to people who might actually be interested.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "remove-addall", "title": "Remove add all", "category": "Studios", "reason": "The 'Add All' feature (referring to projects from your own profile) is considered harmless and helpful for quickly organizing your own work into a themed studio.", "workaround": "If you don't want to use it, you can ignore the button and add projects individually. It doesn't affect other users' project organization.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "reply-limit", "title": "Increase reply limit", "category": "Studios", "reason": "The current limit on nested replies exists to help the moderation team manage conversations. It also prevents the UI from becoming unreadable on smaller screens due to deep indentation.", "workaround": "If a conversation exceeds the reply limit, users can start a new top-level comment thread to continue the discussion.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "multi-host", "title": "Multiple hosts", "category": "Studios", "reason": "Allowing multiple 'hosts' (owners) in a studio increases the risk of 'raids' or hostile takeovers. Having one clear owner ensures there is a single person responsible for the studio's management.", "workaround": "Studio owners can promote trusted users to the 'Manager' rank, which allows them to add/remove projects and curators without giving away full ownership of the studio.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "block-adding", "title": "Block studio adding", "category": "Studios", "reason": "The ability for anyone to add your project to a studio is part of the sharing culture. It helps projects get discovered by new audiences through curated collections.", "workaround": "If your project is added to a studio you don't like, you can manually go to the studio and remove it. However, you cannot prevent it from being added in the first place.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "edit-comments", "title": "Edit comments", "category": "Comments", "reason": "Editing comments is rejected because it could be used for 'gaslighting' or manipulation. Someone could post something mean, wait for a reply, and then edit it to make the replier look bad.", "workaround": "If you made a mistake in a comment, the best practice is to delete the original comment and post a new, corrected one.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "remove-charlimit", "title": "Remove char limit", "category": "Comments", "reason": "The character limit exists to prevent users from posting massive 'walls of text' that slow down the site and act as a form of spam. It encourages concise communication.", "workaround": "If you have a lot to say, you can split your message into multiple comments or create a project/forum post to share your longer thoughts or stories.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "mentions", "title": "Mentions", "category": "Comments", "reason": "Adding a '@username' notification system is rejected because it would be a major tool for spam and harassment. Users could 'ping' others constantly to annoy them.", "workaround": "Users can follow specific forum topics or projects to get notifications when new activity occurs, rather than relying on direct individual pings.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "live-comments", "title": "Live comments", "category": "Comments", "reason": "Scratch does not want to turn the comment section into a real-time chat room. Live comments would increase the moderation burden and change the pace of the community interaction.", "workaround": "Users must manually refresh the page to see new comments. This intentional 'slow-down' helps reduce the chaotic nature typical of live chat environments.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "filter-details", "title": "Explain filter", "category": "Comments", "reason": "If the Scratch Team explained exactly why a word was blocked, users would use that information to find ways to bypass the filter. Keeping the logic hidden helps prevent evasion.", "workaround": "Users should simply try to rephrase their message or reflect on whether the content might be interpreted as inappropriate by a general audience.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "general-chat", "title": "General chat", "category": "Comments", "reason": "A dedicated 'General Chat' section is rejected because it is impossible to moderate such a large, fast-moving space. Scratch is for projects, not for general-purpose social networking.", "workaround": "Users often use studios as makeshift chat rooms for specific topics or groups, which are easier for individual studio managers to monitor and control.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "ban-f4f", "title": "Ban F4F", "category": "Community", "reason": "While 'Follow for Follow' (F4F) is often seen as annoying, it is considered a harmless way for new users to try and build an audience. Banning it would be overly restrictive.", "workaround": "If you don't like F4F requests, you can simply ignore them or state clearly on your profile that you do not participate in such activities.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "user-mods", "title": "User moderators", "category": "Community", "reason": "Giving moderation powers to random users is rejected due to the risk of power abuse and bias. Moderation is a serious responsibility handled by paid staff at the Scratch Foundation.", "workaround": "Instead of being a moderator, users can help by using the 'Report' button accurately and being a positive influence in the community through their own comments and projects.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "politics-ban", "title": "Ban politics", "category": "Community", "reason": "Politics is allowed as long as the discussion is respectful and follows the Community Guidelines. Banning it would limit the community's ability to discuss important world events.", "workaround": "Users who find political projects or comments distressing can report specific instances of hate speech or bullying rather than asking for a ban on all political thought.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "extensions", "title": "Browser extensions", "category": "Community", "reason": "Official support or endorsement of browser extensions (like Scratch Addons) is rejected for security reasons. The Scratch Team cannot verify the safety of third-party code running in users' browsers.", "workaround": "There is no official workaround. Users who choose to use extensions do so at their own risk, understanding that these tools are not supported by the Scratch Foundation.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "self-feature", "title": "Self feature", "category": "Community", "reason": "Allowing users to feature their own projects on the front page would lead to extreme spam and a loss of quality control. The front page should highlight projects curated by others.", "workaround": "Users can suggest their projects to the 'Front Page Curator' or in the 'Suggestions' forum to be reviewed by other members of the community for potential featuring.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "vote-featured", "title": "Vote featured", "category": "Community", "reason": "A voting system for featured projects would favor famous Scratchers with large following bases, making it harder for new or unknown creators to get recognized.", "workaround": "The current system relies on human curators who look for projects that are high-quality, unique, or educational, providing a more balanced selection than a popularity contest.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "change-feature", "title": "Change feature types", "category": "Community", "reason": "The Scratch Team is currently satisfied with the different categories on the front page (Featured, Trending, etc.) and sees no immediate need to fundamentally change the layout.", "workaround": "None. The front page structure is controlled entirely by the Scratch Team to align with their educational and community goals.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "official-contests", "title": "Official contests", "category": "Community", "reason": "Official, site-wide contests are rejected because they create an overly competitive atmosphere that can discourage beginners. Scratch wants to focus on collaboration and learning over winning.", "workaround": "Many users organize their own 'Coding Contests' or 'Design Contests' (MAPs/DMCs) within the community, which provides a fun, informal way to challenge yourself.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "featured-vote", "title": "Featured voting", "category": "Community", "reason": "This is rejected for the same reasons as 'Vote Featured'—it introduces a popularity bias that prevents the discovery of hidden gems from smaller creators.", "workaround": "The manual curation process by the Scratch Team and rotating community curators helps ensure a diverse range of projects are highlighted.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "pm", "title": "Private messaging", "category": "Website", "reason": "Private messaging (PMs) is a major safety risk. It would allow unmonitored communication between users, making it much easier for predators or bullies to operate without oversight.", "workaround": "All communication on Scratch must be public through project comments or profile pages. This 'transparency' ensures that everyone can see what is being said, keeping the site safer.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "13plus", "title": "13+ Scratch", "category": "Website", "reason": "Creating a separate version of Scratch for older users would split the community and make it much harder to manage. Scratch is intended to be a safe, all-ages environment.", "workaround": "Older users are encouraged to help younger users and participate in the more advanced technical forums, maintaining a single, unified community.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "old-ui", "title": "Old UI toggle", "category": "Website", "reason": "Maintaining two different versions of the website's interface would be a massive technical burden for the small Scratch developer team. It would also lead to confusion for new users.", "workaround": "There is no official toggle. Users generally adapt to the new UI over time, and the Scratch Team uses feedback to make iterative improvements to the current design.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "revert-ui", "title": "Revert UI", "category": "Website", "reason": "Design updates are necessary to keep the site modern and functional on newer devices. Reverting to an old design would be a step backward in terms of accessibility and performance.", "workaround": "Instead of reverting, users are encouraged to provide specific, constructive feedback on the forums about what they dislike so the team can improve future versions.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "ads", "title": "Ads", "category": "Website", "reason": "Scratch is run by a non-profit organization and is committed to being an ad-free environment. This ensures that the platform is not influenced by corporate interests and remains safe for kids.", "workaround": "Scratch is funded through donations and grants. Users who want to support the site can contribute through the 'Donate' link, but there are no ads or 'premium' features.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "project-ads", "title": "Project ads", "category": "Website", "reason": "Users are not allowed to pay for their projects to be promoted on the front page. This would be unfair and would fill the site with low-quality content from whoever has the most money.", "workaround": "The only way to get your project noticed is to share it in the 'Show and Tell' forum or create high-quality content that people want to see and share organically.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "break-alert", "title": "Break popup", "category": "Website", "reason": "A built-in popup that tells users to 'take a break' is considered annoying and unnecessary. The Scratch Team believes that screen time management should be handled by parents or the users themselves.", "workaround": "Users can use third-party browser extensions or built-in system tools (like Apple's Screen Time) to set their own limits and reminders for using the site.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "recent-projects", "title": "Recent projects row", "category": "Website", "reason": "Adding a row of 'most recently shared projects' to the front page is rejected because the volume of projects is so high that the list would move too fast to be useful, often showing low-quality or unfinished work.", "workaround": "None. The front page focuses on curated and trending content to ensure that users are presented with projects that have at least some level of community engagement.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "featured-users", "title": "Featured users", "category": "Website", "reason": "Scratch wants to focus on projects, not personalities. Featuring specific users could lead to celebrity-like status that creates hierarchy and drama in the community.", "workaround": "None. While users aren't featured, their projects are. This keeps the focus on the creative work rather than the individual behind it.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "other-report", "title": "Other report", "category": "Website", "reason": "Having a generic 'Other' report category is often abused for reporting things that aren't actually breaking rules. Specific report categories help the moderation team process flags much faster.", "workaround": "If a project is breaking a rule that doesn't fit a category perfectly, select the closest one and provide detailed information in the text box provided.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "remove-membership", "title": "Remove membership", "category": "Website", "reason": "The 'Scratcher' and 'New Scratcher' status system is a vital part of the site's security and community structure. Removing it would make it harder to prevent spam and automate new user onboarding.", "workaround": "Users who don't care about their rank can simply ignore it. The rank doesn't change how you code; it only limits certain website features like cloud variables to prevent bot abuse.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "username-change", "title": "Change usernames", "category": "Accounts", "reason": "Allowing frequent username changes would make it very easy for people to hide from their past behavior or impersonate others. It would also be a massive technical challenge for the database.", "workaround": "In very rare cases (such as safety concerns or accidental use of a real name), you can contact the Scratch Team through 'Contact Us' to request a one-time change, but this is not guaranteed.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "ranks", "title": "Extra ranks", "category": "Accounts", "reason": "Adding more ranks (like 'Elite Scratcher' or 'Master') would create an unhealthy hierarchy and division in the community. Scratch should be a place where everyone is treated equally.", "workaround": "The current three ranks (New Scratcher, Scratcher, and Scratch Team) are sufficient for managing site permissions without creating unnecessary social competition.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "online-status", "title": "Online status", "category": "Accounts", "reason": "An 'Online' dot is rejected because it could lead to pressure to respond to comments instantly or be used for tracking when a user is active, which is a privacy concern for children.", "workaround": "None. Users can see how recently someone has been active by looking at their shared projects or comments, but there is no real-time 'Currently Online' indicator.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "ban-status", "title": "Show bans", "category": "Accounts", "reason": "Displaying that a user is banned on their public profile is rejected for privacy reasons. It can also lead to 'public shaming' or drama within the community.", "workaround": "Users can choose to mention they were banned in their 'About Me' section once they return, but the site will not officially label them as having been punished.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "recycle-names", "title": "Recycle names", "category": "Accounts", "reason": "Reusing names from deleted accounts is rejected because it could lead to impersonation. Someone could take over an old famous Scratcher's name and trick people into thinking they are the original owner.", "workaround": "There is no workaround. Once a username is taken, it is permanently linked to that account ID in the database, even if the account is deleted.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "block-users", "title": "Block users", "category": "Accounts", "reason": "A 'hard block' that prevents a user from seeing your profile is rejected because it often buries issues rather than solving them. Scratch prefers that users report harassment so the team can take action.", "workaround": "Users can 'Report' harmful comments and profiles. While you can't stop someone from seeing your work, the moderators can remove their ability to interact with you if they are breaking rules.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "money-blocks", "title": "Money blocks", "category": "Accounts", "reason": "Blocks related to real money or digital currency are strictly rejected. Scratch is an educational platform, and introducing financial elements would lead to scams and gambling issues.", "workaround": "Projects can use in-game 'points' or 'coins' that are purely fictional and have no value outside of the specific project's logic.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "achievements", "title": "Achievements", "category": "Accounts", "reason": "Site-wide achievements (like 'Shared 10 projects') are rejected because they create pressure to 'grind' and produce low-quality content just to earn a badge or increase a score.", "workaround": "Creators can build their own achievement systems within their games using variables and cloud data to reward players for their specific in-game progress.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "unfollow-note", "title": "Unfollow notice", "category": "Accounts", "reason": "Getting a notification when someone unfollows you is rejected because it serves no positive purpose and almost always leads to drama, hurt feelings, and confrontation.", "workaround": "None. Following and unfollowing are meant to be personal choices for managing your own 'Following' feed, and they should not be used as social weapons.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "bring-back-discuss", "title": "Bring back Discuss", "category": "Forums", "reason": "The 'Discuss' button was removed from the main header because it was frequently misused by new users who didn't understand the purpose of the forums, leading to a high volume of off-topic posts.", "workaround": "The forums are still fully active. Users can access them by clicking the 'Discussion Forums' link in the website footer or by navigating directly to the URL.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "quote-note", "title": "Quote notifications", "category": "Forums", "reason": "Getting a notification every time someone quotes your post in the forums is rejected because it would create a massive amount of notification spam, especially in busy topics.", "workaround": "Users are encouraged to use the 'Follow' button on specific forum topics to be notified of any new posts in that thread, regardless of whether they are quoted.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "offtopic", "title": "Off-topic forum", "category": "Forums", "reason": "An 'Off-Topic' forum is rejected because it is notoriously difficult to moderate. Such forums usually devolve into chaos, arguments, and inappropriate content that has nothing to do with Scratch.", "workaround": "Users can discuss non-Scratch topics within 'Studios' or in the 'Things I'm Making and Doing' or 'Things I'm Reading and Playing' forum categories.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "accepted-list", "title": "Accepted list", "category": "Forums", "reason": "A list of 'accepted' suggestions in the forums is rejected because the status of a suggestion can change, and it would be difficult to maintain an official list without constant manual updates.", "workaround": "None. Users should search the forums to see if their idea has been discussed recently and check the 'Sticky' posts for lists of officially rejected suggestions.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "file-upload", "title": "File uploads", "category": "Forums", "reason": "Allowing users to upload files directly to the forums is a major security risk. It could be used to distribute malware or share inappropriate images that bypass the site's filters.", "workaround": "Users must use approved external image hosting sites to share pictures, or share their code by providing a link to a Scratch project.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "polls", "title": "Forum polls", "category": "Forums", "reason": "Polls are rejected because they often lead to low-effort posts. Scratch prefers that users engage in actual discussion and explain the reasoning behind their opinions.", "workaround": "Users can ask a question in a post and have people respond with their choice and a brief explanation in the comments below.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "guides", "title": "Guide forum", "category": "Forums", "reason": "A dedicated forum for guides is rejected because forum posts are static and difficult to update. The community-run Scratch Wiki is the official place for detailed guides and documentation.", "workaround": "Users can contribute to the Scratch Wiki or create high-quality 'Tutorial' projects and share them in the 'Show and Tell' forum.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "sig-report", "title": "Report signatures", "category": "Forums", "reason": "A separate button for reporting forum signatures is rejected because the existing 'Report' button on a post already allows the user to specify if the signature is the problem.", "workaround": "If you see an inappropriate signature, report the post it is attached to and mention 'inappropriate signature' in the reason box.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "april-fools", "title": "April Fools forums", "category": "Forums", "reason": "Creating a permanent or temporary forum for April Fools jokes is rejected because it usually leads to a massive mess that the moderation team has to clean up for weeks afterward.", "workaround": "The Scratch Team usually organizes a specific site-wide theme or a single official thread for April Fools pranks, keeping the 'silliness' contained to one area.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "remove-60s", "title": "Remove 60s rule", "category": "Forums", "reason": "The '60-second rule' (which prevents posting more than once per minute) is a critical anti-spam measure. Removing it would allow bots or angry users to flood the forums with thousands of posts.", "workaround": "There is no workaround. The timer is a necessary hurdle to ensure that users are taking the time to think about their posts rather than just spamming.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "post-count", "title": "Exact post count", "category": "Forums", "reason": "Showing an exact post count on every post is rejected because it encourages users to 'post-farm' (post meaningless things just to increase their number) to look more experienced.", "workaround": "Focus on the quality of your posts. Being helpful and clear is much more respected in the community than having a high post count.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "image-host", "title": "Custom image hosts", "category": "Forums", "reason": "Scratch only allows a few 'whitelisted' image hosts (like CubeUpload) because they have shown a commitment to keeping their sites safe for kids. Random hosts could contain inappropriate ads or content.", "workaround": "Users must use the officially approved list of image hosts if they want their pictures to appear directly in their forum posts.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 },
+            { "id": "vpn-ban", "title": "Ban VPNs", "category": "Forums", "reason": "Banning all VPNs is rejected because many users have legitimate reasons for using them, such as privacy or bypassing restrictive school or government networks that block Scratch.", "workaround": "The Scratch Team handles VPN-related issues on a case-by-case basis. If a specific IP address is being used for spam, they will block that IP rather than banning all VPN users.", "link": "https://scratch.mit.edu/discuss/topic/343602/", "score": 0 }
+        ];
+
+        window.APP_TEXT = {
+            title: "Scratch.rejected",
+            searchPlaceholder: "Search",
+            categoryHeader: "Sections",
+            rejectedHeader: "Reasoning",
+            workaroundHeader: "Suggested Workaround",
+            heroTitle: "The Archive of \"No\"",
+            heroSubtitle: "Explore the official list of rejected suggestions from the Scratch Team. Understand the philosophy behind the platform's constraints and learn the clever workarounds developed by the community.",
+            heroMainBtn: "Browse All Suggestions",
+            heroTopicBtn: "View Official Topic",
+            githubLinkText: "View on GitHub",
+            githubUrl: "https://github.com/ilim253672745-cell/scratch.rejected/tree/main",
+            emptyState: "No matches found for"
+        };
+    </script>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-[#202124] flex items-center px-4 z-50 border-b border-gray-200 dark:border-gray-700">
+        <button id="menuToggle" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full md:hidden mr-2">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="flex items-center gap-2 cursor-pointer" onclick="showLanding()">
+            <span class="material-symbols-outlined text-red-500 text-3xl">cancel</span>
+            <h1 class="text-xl font-medium" id="appTitleText"></h1>
+        </div>
+        
+        <div class="flex-1 flex justify-center px-4 max-w-2xl hidden md:flex opacity-0 transition-opacity duration-300" id="searchWrapper">
+            <div class="relative w-full">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+                <input type="text" id="searchInput" class="minimal-input w-full py-2.5 pl-12 pr-4 rounded-lg outline-none text-sm" placeholder="">
+            </div>
+        </div>
+
+        <div class="ml-auto flex items-center gap-3">
+            <div id="google_translate_element" class="hidden sm:block"></div>
+            <button id="themeToggle" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full">
+                <span class="material-symbols-outlined" id="themeIcon">dark_mode</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Landing View -->
+    <div id="landingView" class="pt-16 min-h-screen flex flex-col items-center justify-center hero-gradient px-6 text-center">
+        <div class="max-w-3xl">
+            <div class="mb-6 inline-flex p-4 rounded-3xl bg-red-50 dark:bg-red-900/20 text-red-500">
+                <span class="material-symbols-outlined text-6xl">block</span>
+            </div>
+            <h2 id="heroTitleText" class="text-4xl md:text-6xl font-bold mb-6 tracking-tight"></h2>
+            <p id="heroSubtitleText" class="text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed"></p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button id="heroBtn" onclick="showApp()" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"></button>
+                <a id="heroTopicBtn" href="https://scratch.mit.edu/discuss/topic/343602/" target="_blank" class="px-8 py-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full font-bold transition-all"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main View -->
+    <div id="mainAppView" class="hidden pt-16 h-screen overflow-hidden flex">
+        <aside id="sidebar" class="hidden md:flex flex-col w-72 bg-white dark:bg-[#202124] border-r border-gray-100 dark:border-gray-800">
+            <div class="px-6 py-4 flex-none">
+                <h2 class="text-xs font-medium text-gray-500 uppercase tracking-widest" id="catHeaderText"></h2>
+            </div>
+            <nav id="categoryNav" class="pr-4 overflow-y-auto flex-1"></nav>
+            
+            <!-- Sidebar Footer with Github Link -->
+            <div class="p-6 border-t border-gray-100 dark:border-gray-800 flex-none">
+                <a id="githubLink" href="#" target="_blank" class="flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors">
+                    <span class="material-symbols-outlined text-lg">code</span>
+                    <span id="githubLinkText"></span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto bg-white dark:bg-[#202124]">
+            <div class="max-w-4xl mx-auto p-6" id="suggestionsContainer"></div>
+        </main>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, onSnapshot, doc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-id';
+
+        let suggestions = [...window.LOCAL_DATA];
+        let userVotes = {};
+        let searchTerm = "";
+        let currentUser = null;
+
+        window.showApp = () => {
+            document.getElementById('landingView').classList.add('hidden');
+            document.getElementById('mainAppView').classList.remove('hidden');
+            document.getElementById('searchWrapper').classList.remove('opacity-0');
+            render();
+        };
+
+        window.showLanding = () => {
+            document.getElementById('landingView').classList.remove('hidden');
+            document.getElementById('mainAppView').classList.add('hidden');
+            document.getElementById('searchWrapper').classList.add('opacity-0');
+        };
+
+        function initUI() {
+            const t = window.APP_TEXT;
+            document.getElementById('appTitleText').innerText = t.title;
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.getElementById('catHeaderText').innerText = t.categoryHeader;
+            document.getElementById('heroTitleText').innerText = t.heroTitle;
+            document.getElementById('heroSubtitleText').innerText = t.heroSubtitle;
+            document.getElementById('heroBtn').innerText = t.heroMainBtn;
+            document.getElementById('heroTopicBtn').innerText = t.heroTopicBtn;
+            document.getElementById('githubLinkText').innerText = t.githubLinkText;
+            document.getElementById('githubLink').href = t.githubUrl;
+            
+            document.getElementById('searchInput').oninput = (e) => {
+                searchTerm = e.target.value.toLowerCase();
+                render();
+            };
+
+            const isDark = document.documentElement.classList.contains('dark');
+            document.getElementById('themeIcon').innerText = isDark ? 'light_mode' : 'dark_mode';
+
+            document.getElementById('themeToggle').onclick = () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                document.getElementById('themeIcon').innerText = isDark ? 'light_mode' : 'dark_mode';
+            };
+        }
+
+        async function start() {
+            initUI();
+            
+            const initAuth = async () => {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            };
+
+            await initAuth();
+
+            onAuthStateChanged(auth, (user) => {
+                currentUser = user;
+                if (user) {
+                    const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'rejectedSuggestions');
+                    onSnapshot(colRef, (snapshot) => {
+                        const dbItems = {};
+                        snapshot.forEach(doc => dbItems[doc.id] = doc.data());
+                        suggestions = suggestions.map(item => ({
+                            ...item,
+                            score: (dbItems[item.id] && dbItems[item.id].score !== undefined) ? dbItems[item.id].score : (item.score || 0)
+                        }));
+                        render();
+                    }, (err) => {});
+
+                    const userVotesRef = collection(db, 'artifacts', appId, 'users', user.uid, 'votes');
+                    onSnapshot(userVotesRef, (snapshot) => {
+                        userVotes = {};
+                        snapshot.forEach(doc => userVotes[doc.id] = doc.data().value);
+                        render();
+                    }, (err) => {});
+                }
+            });
+        }
+
+        window.handleVote = async (id, newValue) => {
+            if (!currentUser) return;
+            const existingVote = userVotes[id] || 0;
+            let scoreChange = 0;
+            if (existingVote === newValue) {
+                scoreChange = -existingVote;
+                newValue = 0;
+            } else {
+                scoreChange = newValue - existingVote;
+            }
+            const userVoteDoc = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'votes', id);
+            await setDoc(userVoteDoc, { value: newValue }).catch(() => {});
+            const scoreDoc = doc(db, 'artifacts', appId, 'public', 'data', 'rejectedSuggestions', id);
+            try {
+                await updateDoc(scoreDoc, { score: increment(scoreChange) }).catch(async () => {
+                    const original = window.LOCAL_DATA.find(x => x.id === id);
+                    await setDoc(scoreDoc, { id: original.id, score: (original.score || 0) + scoreChange });
+                });
+            } catch (err) {}
+        };
+
+        function highlight(text, term) {
+            if (!term || !text) return text;
+            const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            return text.toString().replace(regex, '<mark>$1</mark>');
+        }
+
+        function render() {
+            if (document.getElementById('mainAppView').classList.contains('hidden')) return;
+            const container = document.getElementById('suggestionsContainer');
+            const nav = document.getElementById('categoryNav');
+            const t = window.APP_TEXT;
+
+            const filtered = suggestions.filter(s => 
+                s.title.toLowerCase().includes(searchTerm) || 
+                s.reason.toLowerCase().includes(searchTerm)
+            );
+
+            const categories = [...new Set(suggestions.map(s => s.category))].sort();
+            nav.innerHTML = categories.map(cat => `
+                <div onclick="document.getElementById('cat-${cat.replace(/\s+/g, '-')}').scrollIntoView({behavior:'smooth'})" 
+                     class="nav-item w-full text-left px-6 py-3 text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    ${cat}
+                </div>
+            `).join('');
+
+            const groups = filtered.reduce((acc, s) => {
+                acc[s.category] = acc[s.category] || [];
+                acc[s.category].push(s);
+                return acc;
+            }, {});
+
+            if (Object.keys(groups).length === 0) {
+                container.innerHTML = `<div class="py-20 text-center text-gray-400">${t.emptyState} "${searchTerm}".</div>`;
+                return;
+            }
+
+            container.innerHTML = Object.entries(groups).map(([cat, items]) => `
+                <section id="cat-${cat.replace(/\s+/g, '-')}" class="mb-10">
+                    <h3 class="notranslate text-xs font-bold text-gray-400 uppercase tracking-widest py-4 border-b border-gray-100 dark:border-gray-800 mb-4">${cat}</h3>
+                    <div class="space-y-6">
+                        ${items.map(item => {
+                            const currentVote = userVotes[item.id] || 0;
+                            return `
+                            <div class="card pb-6 flex gap-6">
+                                <div class="flex flex-col items-center pt-1 min-w-[40px] notranslate">
+                                    <button onclick="window.handleVote('${item.id}', 1)" 
+                                            class="${currentVote === 1 ? 'text-blue-600' : 'text-gray-400'} hover:text-blue-600 transition-colors">
+                                        <span class="material-symbols-outlined text-3xl" style="${currentVote === 1 ? 'font-variation-settings: \'FILL\' 1' : ''}">expand_less</span>
+                                    </button>
+                                    <span class="text-sm font-bold ${currentVote === 1 ? 'text-blue-600' : (currentVote === -1 ? 'text-red-600' : '')}">${item.score}</span>
+                                    <button onclick="window.handleVote('${item.id}', -1)" 
+                                            class="${currentVote === -1 ? 'text-red-600' : 'text-gray-400'} hover:text-red-600 transition-colors">
+                                        <span class="material-symbols-outlined text-3xl" style="${currentVote === -1 ? 'font-variation-settings: \'FILL\' 1' : ''}">expand_more</span>
+                                    </button>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-xl font-medium text-blue-600 dark:text-blue-400 mb-1">${highlight(item.title, searchTerm)}</h4>
+                                    <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-2xl border border-gray-100 dark:border-gray-800">
+                                        <p class="text-[10px] font-bold uppercase text-gray-400 mb-2 tracking-wider">${t.rejectedHeader}</p>
+                                        <div class="text-sm text-gray-800 dark:text-gray-200">${marked.parse(item.reason)}</div>
+                                        <div class="mt-4">
+                                            <p class="text-[10px] font-bold uppercase text-green-500 mb-2 tracking-wider">${t.workaroundHeader}</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300 italic">"${item.workaround}"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;}).join('')}
+                    </div>
+                </section>
+            `).join('');
+        }
+
+        start();
+    </script>
+</body>
+</html>
